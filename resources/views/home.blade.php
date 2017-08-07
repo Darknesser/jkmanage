@@ -1,337 +1,470 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <!-- start: Meta -->
-    <meta charset="utf-8">
     <title>巨开管理后台</title>
-    <meta name="description" content="Bootstrap Metro Dashboard">
-    <meta name="author" content="Dennis Ji">
-    <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <!-- end: Meta -->
 
-    <!-- start: Mobile Specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- end: Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- start: CSS -->
-    <link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link id="base-style" href="css/style.css" rel="stylesheet">
-    <link id="base-style-responsive" href="css/style-responsive.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
-    <!-- end: CSS -->
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
+    <!-- libraries -->
+    <link href="css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
 
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="css/compiled/index.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+    {{--<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />--}}
+
+    <!-- lato font -->
+    {{--<link href='http://fonts.useso.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css' />--}}
+
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link id="ie-style" href="css/ie.css" rel="stylesheet">
     <![endif]-->
-
-    <!--[if IE 9]>
-    <link id="ie9style" href="css/ie9.css" rel="stylesheet">
-    <![endif]-->
-
-    <!-- start: Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- end: Favicon -->
-
-
-
-
-</head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
-<!-- start: Header -->
+
+<!-- navbar -->
 @include('public.header')
-<!-- start: Header --><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+<!-- end navbar -->
 
-<div class="container-fluid-full">
-    <div class="row-fluid">
+<!-- sidebar -->
+@include('public.left')
+<!-- end sidebar -->
 
-        <!-- start: Main Menu -->
-        @include('public.left')
-        <!-- end: Main Menu -->
 
-        <noscript>
-            <div class="alert alert-block span10">
-                <h4 class="alert-heading">Warning!</h4>
-                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+<!-- main container -->
+<div class="content">
+
+    <!-- settings changer -->
+    {{--<div class="skins-nav">--}}
+        {{--<a href="#" class="skin first_nav selected">--}}
+            {{--<span class="icon"></span><span class="text">Default skin</span>--}}
+        {{--</a>--}}
+        {{--<a href="#" class="skin second_nav" data-file="css/skins/dark.css">--}}
+            {{--<span class="icon"></span><span class="text">Dark skin</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+
+    <div class="container-fluid">
+
+        <!-- upper main stats -->
+        <div id="main-stats">
+            <div class="row-fluid stats-row">
+                <div class="span3 stat">
+                    <div class="data">
+                        <span class="number">2457</span>
+                        visits
+                    </div>
+                    <span class="date">Today</span>
+                </div>
+                <div class="span3 stat">
+                    <div class="data">
+                        <span class="number">3240</span>
+                        users
+                    </div>
+                    <span class="date">February 2014</span>
+                </div>
+                <div class="span3 stat">
+                    <div class="data">
+                        <span class="number">322</span>
+                        orders
+                    </div>
+                    <span class="date">This week</span>
+                </div>
+                <div class="span3 stat last">
+                    <div class="data">
+                        <span class="number">$2,340</span>
+                        sales
+                    </div>
+                    <span class="date">last 30 days</span>
+                </div>
             </div>
-        </noscript>
+        </div>
+        <!-- end upper main stats -->
 
-        <!-- start: Content -->
-        <div id="content" class="span10">
+        <div id="pad-wrapper">
 
-
-            <ul class="breadcrumb">
-                <li>
-                    <i class="icon-home"></i>
-                    <a href="index.html">Home</a>
-                    <i class="icon-angle-right"></i>
-                </li>
-                <li><a href="#">Dashboard</a></li>
-            </ul>
-
-            <div class="row-fluid hideInIE8 circleStats">
-
-                <div class="span2" onTablet="span4" onDesktop="span2">
-                    <div class="circleStatsItemBox yellow">
-                        <div class="header">Disk Space Usage</div>
-                        <span class="percent">percent</span>
-                        <div class="circleStat">
-                            <input type="text" value="58" class="whiteCircle" />
-                        </div>
-                        <div class="footer">
-							<span class="count">
-								<span class="number">20000</span>
-								<span class="unit">MB</span>
-							</span>
-                            <span class="sep"> / </span>
-                            <span class="value">
-								<span class="number">50000</span>
-								<span class="unit">MB</span>
-							</span>
-                        </div>
+            <!-- statistics chart built with jQuery Flot -->
+            <div class="row-fluid chart">
+                <h4>
+                    Statistics
+                    <div class="btn-group pull-right">
+                        <button class="glow left">DAY</button>
+                        <button class="glow middle active">MONTH</button>
+                        <button class="glow right">YEAR</button>
                     </div>
+                </h4>
+                <div class="span12">
+                    <div id="statsChart"></div>
                 </div>
-
-                <div class="span2" onTablet="span4" onDesktop="span2">
-                    <div class="circleStatsItemBox green">
-                        <div class="header">Bandwidth</div>
-                        <span class="percent">percent</span>
-                        <div class="circleStat">
-                            <input type="text" value="78" class="whiteCircle" />
-                        </div>
-                        <div class="footer">
-							<span class="count">
-								<span class="number">5000</span>
-								<span class="unit">GB</span>
-							</span>
-                            <span class="sep"> / </span>
-                            <span class="value">
-								<span class="number">5000</span>
-								<span class="unit">GB</span>
-							</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span2" onTablet="span4" onDesktop="span2">
-                    <div class="circleStatsItemBox red">
-                        <div class="header">Memory</div>
-                        <span class="percent">percent</span>
-                        <div class="circleStat">
-                            <input type="text" value="100" class="whiteCircle" />
-                        </div>
-                        <div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-                            <span class="sep"> / </span>
-                            <span class="value">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span2 noMargin" onTablet="span4" onDesktop="span2">
-                    <div class="circleStatsItemBox pink">
-                        <div class="header">CPU</div>
-                        <span class="percent">percent</span>
-                        <div class="circleStat">
-                            <input type="text" value="83" class="whiteCircle" />
-                        </div>
-                        <div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GHz</span>
-							</span>
-                            <span class="sep"> / </span>
-                            <span class="value">
-								<span class="number">3.2</span>
-								<span class="unit">GHz</span>
-							</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span2" onTablet="span4" onDesktop="span2">
-                    <div class="circleStatsItemBox blue">
-                        <div class="header">Memory</div>
-                        <span class="percent">percent</span>
-                        <div class="circleStat">
-                            <input type="text" value="100" class="whiteCircle" />
-                        </div>
-                        <div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-                            <span class="sep"> / </span>
-                            <span class="value">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span2" onTablet="span4" onDesktop="span2">
-                    <div class="circleStatsItemBox green">
-                        <div class="header">Memory</div>
-                        <span class="percent">percent</span>
-                        <div class="circleStat">
-                            <input type="text" value="100" class="whiteCircle" />
-                        </div>
-                        <div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-                            <span class="sep"> / </span>
-                            <span class="value">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+            <!-- end statistics chart -->
 
-            <div class="row-fluid">
+            <!-- UI Elements section -->
+            <div class="row-fluid section ui-elements">
+                <h4>UI Elements</h4>
+                <div class="span5 knobs">
+                    <div class="knob-wrapper">
+                        <input type="text" value="50" class="knob" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#30a1ec" data-bgcolor="#d4ecfd" data-width="150" />
+                        <div class="info">
+                            <div class="param">
+                                <span class="line blue"></span>
+                                Active users
+                            </div>
+                        </div>
+                    </div>
+                    <div class="knob-wrapper">
+                        <input type="text" value="75" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#3d88ba" data-bgcolor="#d4ecfd" data-width="150" />
+                        <div class="info">
+                            <div class="param">
+                                <span class="line blue"></span>
+                                % disk space usage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6 showcase">
+                    <div class="ui-sliders">
+                        <div class="slider slider-sample1 vertical-handler"></div>
+                        <div class="slider slider-sample2"></div>
+                        <div class="slider slider-sample3"></div>
+                    </div>
+                    <div class="ui-group">
+                        <a class="btn-flat inverse">Large Button</a>
+                        <a class="btn-flat gray">Large Button</a>
+                        <a class="btn-flat default">Large Button</a>
+                        <a class="btn-flat primary">Large Button</a>
+                    </div>
 
-                <a class="quick-button metro yellow span2">
-                    <i class="icon-group"></i>
-                    <p>Users</p>
-                    <span class="badge">237</span>
-                </a>
-                <a class="quick-button metro red span2">
-                    <i class="icon-comments-alt"></i>
-                    <p>Comments</p>
-                    <span class="badge">46</span>
-                </a>
-                <a class="quick-button metro blue span2">
-                    <i class="icon-shopping-cart"></i>
-                    <p>Orders</p>
-                    <span class="badge">13</span>
-                </a>
-                <a class="quick-button metro green span2">
-                    <i class="icon-barcode"></i>
-                    <p>Products</p>
-                </a>
-                <a class="quick-button metro pink span2">
-                    <i class="icon-envelope"></i>
-                    <p>Messages</p>
-                    <span class="badge">88</span>
-                </a>
-                <a class="quick-button metro black span2">
-                    <i class="icon-calendar"></i>
-                    <p>Calendar</p>
-                </a>
+                    <div class="ui-group">
+                        <a class="btn-flat icon">
+                            <i class="tool"></i> Icon button
+                        </a>
+                        <a class="btn-glow small inverse">
+                            <i class="shuffle"></i>
+                        </a>
+                        <a class="btn-glow small primary">
+                            <i class="setting"></i>
+                        </a>
+                        <a class="btn-glow small default">
+                            <i class="attach"></i>
+                        </a>
+                        <div class="ui-select">
+                            <select>
+                                <option selected="" />Dropdown
+                                <option />Custom selects
+                                <option />Pure css styles
+                            </select>
+                        </div>
 
-                <div class="clearfix"></div>
+                        <div class="btn-group">
+                            <button class="glow left">LEFT</button>
+                            <button class="glow right">RIGHT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end UI elements section -->
 
-            </div><!--/row-->
+            <!-- table sample -->
+            <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
+            <div class="table-products section">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>Products <small>Table sample</small></h4>
+                    </div>
+                </div>
 
+                <div class="row-fluid filter-block">
+                    <div class="pull-right">
+                        <div class="ui-select">
+                            <select>
+                                <option />Filter users
+                                <option />Signed last 30 days
+                                <option />Active users
+                            </select>
+                        </div>
+                        <input type="text" class="search" />
+                        <a class="btn-flat new-product">+ Add product</a>
+                    </div>
+                </div>
 
-
-        </div><!--/.fluid-container-->
-
-        <!-- end: Content -->
-    </div><!--/#content.span10-->
-</div><!--/fluid-row-->
-
-<div class="modal hide fade" id="myModal">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Settings</h3>
-    </div>
-    <div class="modal-body">
-        <p>Here settings can be configured...</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <a href="#" class="btn btn-primary">Save changes</a>
+                <div class="row-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="span3">
+                                <input type="checkbox" />
+                                Product
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>Description
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>Status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row -->
+                        <tr class="first">
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#">There are many variations </a>
+                            </td>
+                            <td class="description">
+                                if you are going to use a passage of Lorem Ipsum.
+                            </td>
+                            <td>
+                                <span class="label label-success">Active</span>
+                                <ul class="actions">
+                                    <li><i class="table-edit"></i></li>
+                                    <li><i class="table-settings"></i></li>
+                                    <li class="last"><i class="table-delete"></i></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#">Internet tend</a>
+                            </td>
+                            <td class="description">
+                                There are many variations of passages.
+                            </td>
+                            <td>
+                                <ul class="actions">
+                                    <li><i class="table-edit"></i></li>
+                                    <li><i class="table-settings"></i></li>
+                                    <li class="last"><i class="table-delete"></i></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#">Many desktop publishing </a>
+                            </td>
+                            <td class="description">
+                                if you are going to use a passage of Lorem Ipsum.
+                            </td>
+                            <td>
+                                <ul class="actions">
+                                    <li><i class="table-edit"></i></li>
+                                    <li><i class="table-settings"></i></li>
+                                    <li class="last"><i class="table-delete"></i></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#">Generate Lorem </a>
+                            </td>
+                            <td class="description">
+                                There are many variations of passages.
+                            </td>
+                            <td>
+                                <span class="label label-info">Standby</span>
+                                <ul class="actions">
+                                    <li><i class="table-edit"></i></li>
+                                    <li><i class="table-settings"></i></li>
+                                    <li class="last"><i class="table-delete"></i></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#">Internet tend</a>
+                            </td>
+                            <td class="description">
+                                There are many variations of passages.
+                            </td>
+                            <td>
+                                <ul class="actions">
+                                    <li><i class="table-edit"></i></li>
+                                    <li><i class="table-settings"></i></li>
+                                    <li class="last"><i class="table-delete"></i></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <ul>
+                        <li><a href="#">&#8249;</a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">&#8250;</a></li>
+                    </ul>
+                </div>
+                <div>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></div>
+            </div>
+            <!-- end table sample -->
+        </div>
     </div>
 </div>
 
-<div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <ul class="list-inline item-details">
-            <li><a href="#">Admin templates</a></li>
-            <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-        </ul>
-    </div>
-</div>
 
-<div class="clearfix"></div>
-
-@include('public.footer')
-
-<!-- start: JavaScript-->
-
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jquery-migrate-1.0.0.min.js"></script>
-
-<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
-
-<script src="js/jquery.ui.touch-punch.js"></script>
-
-<script src="js/modernizr.js"></script>
-
+<!-- scripts -->
+<script src="js/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
-<script src="js/jquery.cookie.js"></script>
-
-<script src='js/fullcalendar.min.js'></script>
-
-<script src='js/jquery.dataTables.min.js'></script>
-
-<script src="js/excanvas.js"></script>
+<script src="js/jquery-ui-1.10.2.custom.min.js"></script>
+<!-- knob -->
+<script src="js/jquery.knob.js"></script>
+<!-- flot charts -->
 <script src="js/jquery.flot.js"></script>
-<script src="js/jquery.flot.pie.js"></script>
 <script src="js/jquery.flot.stack.js"></script>
-<script src="js/jquery.flot.resize.min.js"></script>
+<script src="js/jquery.flot.resize.js"></script>
+<script src="js/theme.js"></script>
 
-<script src="js/jquery.chosen.min.js"></script>
+<script type="text/javascript">
+    $(function () {
 
-<script src="js/jquery.uniform.min.js"></script>
+        // jQuery Knobs
+        $(".knob").knob();
 
-<script src="js/jquery.cleditor.min.js"></script>
 
-<script src="js/jquery.noty.js"></script>
 
-<script src="js/jquery.elfinder.min.js"></script>
+        // jQuery UI Sliders
+        $(".slider-sample1").slider({
+            value: 100,
+            min: 1,
+            max: 500
+        });
+        $(".slider-sample2").slider({
+            range: "min",
+            value: 130,
+            min: 1,
+            max: 500
+        });
+        $(".slider-sample3").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [ 40, 170 ],
+        });
 
-<script src="js/jquery.raty.min.js"></script>
 
-<script src="js/jquery.iphone.toggle.js"></script>
 
-<script src="js/jquery.uploadify-3.1.min.js"></script>
+        // jQuery Flot Chart
+        var visits = [[1, 50], [2, 40], [3, 45], [4, 23],[5, 55],[6, 65],[7, 61],[8, 70],[9, 65],[10, 75],[11, 57],[12, 59]];
+        var visitors = [[1, 25], [2, 50], [3, 23], [4, 48],[5, 38],[6, 40],[7, 47],[8, 55],[9, 43],[10,50],[11,47],[12, 39]];
 
-<script src="js/jquery.gritter.min.js"></script>
+        var plot = $.plot($("#statsChart"),
+                [ { data: visits, label: "Signups"},
+                    { data: visitors, label: "Visits" }], {
+                    series: {
+                        lines: { show: true,
+                            lineWidth: 1,
+                            fill: true,
+                            fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.13 } ] }
+                        },
+                        points: { show: true,
+                            lineWidth: 2,
+                            radius: 3
+                        },
+                        shadowSize: 0,
+                        stack: true
+                    },
+                    grid: { hoverable: true,
+                        clickable: true,
+                        tickColor: "#f9f9f9",
+                        borderWidth: 0
+                    },
+                    legend: {
+                        // show: false
+                        labelBoxBorderColor: "#fff"
+                    },
+                    colors: ["#a7b5c5", "#30a0eb"],
+                    xaxis: {
+                        ticks: [[1, "JAN"], [2, "FEB"], [3, "MAR"], [4,"APR"], [5,"MAY"], [6,"JUN"],
+                            [7,"JUL"], [8,"AUG"], [9,"SEP"], [10,"OCT"], [11,"NOV"], [12,"DEC"]],
+                        font: {
+                            size: 12,
+                            family: "Open Sans, Arial",
+                            variant: "small-caps",
+                            color: "#697695"
+                        }
+                    },
+                    yaxis: {
+                        ticks:3,
+                        tickDecimals: 0,
+                        font: {size:12, color: "#9da3a9"}
+                    }
+                });
 
-<script src="js/jquery.imagesloaded.js"></script>
+        function showTooltip(x, y, contents) {
+            $('<div id="tooltip">' + contents + '</div>').css( {
+                position: 'absolute',
+                display: 'none',
+                top: y - 30,
+                left: x - 50,
+                color: "#fff",
+                padding: '2px 5px',
+                'border-radius': '6px',
+                'background-color': '#000',
+                opacity: 0.80
+            }).appendTo("body").fadeIn(200);
+        }
 
-<script src="js/jquery.masonry.min.js"></script>
+        var previousPoint = null;
+        $("#statsChart").bind("plothover", function (event, pos, item) {
+            if (item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
 
-<script src="js/jquery.knob.modified.js"></script>
+                    $("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(0),
+                            y = item.datapoint[1].toFixed(0);
 
-<script src="js/jquery.sparkline.min.js"></script>
+                    var month = item.series.xaxis.ticks[item.dataIndex].label;
 
-<script src="js/counter.js"></script>
-
-<script src="js/retina.js"></script>
-
-<script src="js/custom.js"></script>
-<!-- end: JavaScript-->
+                    showTooltip(item.pageX, item.pageY,
+                            item.series.label + " of " + month + ": " + y);
+                }
+            }
+            else {
+                $("#tooltip").remove();
+                previousPoint = null;
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
-

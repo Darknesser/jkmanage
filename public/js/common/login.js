@@ -4,19 +4,20 @@ new Vue({
     data: {
         name: '',
         password: '',
-        remember: 0
+        remember: 1
     },
     mounted: function () {
-        axios.get('/remember')
-            .then((response) => {
-                console.log(response);
-                let data = response.data;
-                this.name = data.name;
-                this.password = data.password;
+        axios.get('/remember').then((response) => {
+            console.log(response);
+            let d = response.data;
+            if(d.code === 1) {
+                this.name = d.data.name;
+                this.password = d.data.pwd;
                 this.remember = 1;
-            }).catch((error) => {
-
-            });
+            }else {
+                this.$message.error(d.message);
+            }
+        });
     },
     methods: {
         login: function () {
@@ -41,3 +42,4 @@ new Vue({
         }
     }
 });
+

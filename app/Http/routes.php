@@ -24,5 +24,7 @@ Route::post('/login', 'LoginController@login');
 
 Route::get('/remember', 'LoginController@remember');
 
+Route::get('/logout', 'LoginController@logout');
+
 Route::get('/server', 'ServiceController@serverList');
 

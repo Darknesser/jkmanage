@@ -1,41 +1,91 @@
-<div id="sidebar-left" class="span2">
-    <div class="nav-collapse sidebar-nav">
-        <ul class="nav nav-tabs nav-stacked main-menu">
-            <li>
-                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> 资管系统</span></a>
-                <ul>
-                    <li><a class="submenu" href="{{ url('server') }}"><i class="icon-file-alt"></i><span class="hidden-tablet"> 服务器</span></a></li>
-                    <li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> 域名</span></a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> 代理商</span></a>
-                <ul>
-                    <li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> 域名</span></a></li>
-                </ul>
-            </li>
-            {{--<li><a href="{{ url('/home') }}"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>--}}
-            {{--<li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet"> Messages</span></a></li>--}}
-            {{--<li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a></li>--}}
-            {{--<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>--}}
-            {{--<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>--}}
-            {{--<li>--}}
-                {{--<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span><span class="label label-important"> 3 </span></a>--}}
-                {{--<ul>--}}
-                    {{--<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 1</span></a></li>--}}
-                    {{--<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 2</span></a></li>--}}
-                    {{--<li><a class="submenu" href="submenu3.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 3</span></a></li>--}}
-                {{--</ul>--}}
-            {{--</li>--}}
-            {{--<li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>--}}
-            {{--<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>--}}
-            {{--<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>--}}
-            {{--<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>--}}
-            {{--<li><a href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>--}}
-            {{--<li><a href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>--}}
-            {{--<li><a href="file-manager.html"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>--}}
-            {{--<li><a href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>--}}
-            {{--<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>--}}
-        </ul>
-    </div>
+<div id="sidebar-nav">
+    <ul id="dashboard-menu">
+        <li class="active">
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+            <a href="{{ url('/home') }}">
+                <i class="icon-home"></i>
+                <span>首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/server') }}">
+                <i class="icon-signal"></i>
+                <span>服务器</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('/domain') }}">
+                <i class="icon-th-large"></i>
+                <span>域名</span>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>Users</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="user-list.html">User list</a></li>
+                <li><a href="new-user.html">New user form</a></li>
+                <li><a href="user-profile.html">User profile</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-edit"></i>
+                <span>Forms</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="form-showcase.html">Form showcase</a></li>
+                <li><a href="form-wizard.html">Form wizard</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="gallery.html">
+                <i class="icon-picture"></i>
+                <span>Gallery</span>
+            </a>
+        </li>
+        <li>
+            <a href="calendar.html">
+                <i class="icon-calendar-empty"></i>
+                <span>Calendar</span>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle ui-elements" href="#">
+                <i class="icon-code-fork"></i>
+                <span>UI Elements</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="ui-elements.html">UI Elements</a></li>
+                <li><a href="icons.html">Icons</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="personal-info.html">
+                <i class="icon-cog"></i>
+                <span>My Info</span>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-share-alt"></i>
+                <span>Extras</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="code-editor.html">Code editor</a></li>
+                <li><a href="grids.html">Grids</a></li>
+                <li><a href="signin.html">Sign in</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+            </ul>
+        </li>
+    </ul>
 </div>

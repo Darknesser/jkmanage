@@ -1,827 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Detail Admin - Tables showcase</title>
 
-    <!-- start: Meta -->
-    <meta charset="utf-8">
-    <title>Bootstrap Metro Dashboard by Dennis Ji for ARM demo</title>
-    <meta name="description" content="Bootstrap Metro Dashboard">
-    <meta name="author" content="Dennis Ji">
-    <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <!-- end: Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- start: Mobile Specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- end: Mobile Specific -->
+    <!-- bootstrap -->
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
-    <!-- start: CSS -->
-    <link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link id="base-style" href="css/style.css" rel="stylesheet">
-    <link id="base-style-responsive" href="css/style-responsive.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
-    <!-- end: CSS -->
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
 
+    <!-- libraries -->
+    <link href="css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
 
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="css/compiled/tables.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
+
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link id="ie-style" href="css/ie.css" rel="stylesheet">
     <![endif]-->
-
-    <!--[if IE 9]>
-    <link id="ie9style" href="css/ie9.css" rel="stylesheet">
-    <![endif]-->
-
-    <!-- start: Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- end: Favicon -->
-
-
-
-
-</head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
-<!-- start: Header -->
+
+<!-- navbar -->
 @include('public.header')
-<!-- start: Header -->
+<!-- end navbar -->
 
-<div class="container-fluid-full">
-    <div class="row-fluid">
-
-        <!-- start: Main Menu -->
-        @include('public.left')
-        <!-- end: Main Menu -->
-
-        <noscript>
-            <div class="alert alert-block span10">
-                <h4 class="alert-heading">Warning!</h4>
-                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-            </div>
-        </noscript>
-
-        <!-- start: Content -->
-        <div id="content" class="span10">
+<!-- sidebar -->
+@include('public.left')
+<!-- end sidebar -->
 
 
-            <ul class="breadcrumb">
-                <li>
-                    <i class="icon-home"></i>
-                    <a href="{{ url('/home') }}">首页</a>
-                    <i class="icon-angle-right"></i>
-                </li>
-                <li>
-                    <a href="#">资管系统</a>
-                    <i class="icon-angle-right"></i>
-                </li>
-                <li><a href="{{ url('/server') }}">服务器</a></li>
-            </ul>
+<!-- main container -->
+<div class="content">
 
-            <div class="row-fluid sortable">
-                <div class="box span12">
-                    <div class="box-header" data-original-title>
-                        <h2><i class="halflings-icon white user"></i><span class="break"></span>服务器</h2>
-                        <div class="box-icon">
-                            <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-                            <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-                            <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+    <!-- settings changer -->
+    {{--<div class="skins-nav">--}}
+        {{--<a href="#" class="skin first_nav selected">--}}
+            {{--<span class="icon"></span><span class="text">Default</span>--}}
+        {{--</a>--}}
+        {{--<a href="#" class="skin second_nav" data-file="css/skins/dark.css">--}}
+            {{--<span class="icon"></span><span class="text">Dark skin</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+
+    <div class="container-fluid">
+        <div id="pad-wrapper">
+
+            <!-- products table-->
+            <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
+            <div class="table-wrapper products-table section">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>Products</h4>
+                    </div>
+                </div>
+
+                <div class="row-fluid filter-block">
+                    <div class="pull-right">
+                        <div class="ui-select">
+                            <select>
+                                <option />Filter users
+                                <option />Signed last 30 days
+                                <option />Active users
+                            </select>
                         </div>
+                        <input type="text" class="search" />
+                        <a class="btn-flat success new-product">+ Add product</a>
                     </div>
-                    <div class="box-content">
-                        <table class="table table-striped table-bordered bootstrap-datatable datatable">
-                            <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Date registered</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/02/01</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/02/01</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/21</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/21</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/08/23</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/08/23</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/06/01</td>
-                                <td class="center">Admin</td>
-                                <td class="center">
-                                    <span class="label">Inactive</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/06/01</td>
-                                <td class="center">Admin</td>
-                                <td class="center">
-                                    <span class="label">Inactive</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
+                </div>
 
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
+                <div class="row-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="span3">
+                                <input type="checkbox" />
+                                Product
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>Description
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>Status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row -->
+                        <tr class="first">
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#" class="name">Generate Lorem </a>
+                            </td>
+                            <td class="description">
+                                if you are going to use a passage of Lorem Ipsum.
+                            </td>
+                            <td>
+                                <span class="label label-success">Active</span>
+                                <ul class="actions">
+                                    <li><a href="#">Edit</a></li>
+                                    <li class="last"><a href="#">Delete</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#" class="name">Internet tend</a>
+                            </td>
+                            <td class="description">
+                                There are many variations of passages.
+                            </td>
+                            <td>
+                                <ul class="actions">
+                                    <li><a href="#">Edit</a></li>
+                                    <li class="last"><a href="#">Delete</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#" class="name">Generate Lorem </a>
+                            </td>
+                            <td class="description">
+                                if you are going to use a passage of Lorem Ipsum.
+                            </td>
+                            <td>
+                                <ul class="actions">
+                                    <li><a href="#">Edit</a></li>
+                                    <li class="last"><a href="#">Delete</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#" class="name">Internet tend</a>
+                            </td>
+                            <td class="description">
+                                There are many variations of passages.
+                            </td>
+                            <td>
+                                <span class="label label-info">Standby</span>
+                                <ul class="actions">
+                                    <li><a href="#">Edit</a></li>
+                                    <li class="last"><a href="#">Delete</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                                <div class="img">
+                                    <img src="img/table-img.png" />
+                                </div>
+                                <a href="#" class="name">Generate Lorem </a>
+                            </td>
+                            <td class="description">
+                                if you are going to use a passage of Lorem Ipsum.
+                            </td>
+                            <td>
+                                <span class="label label-success">Active</span>
+                                <ul class="actions">
+                                    <li><a href="#">Edit</a></li>
+                                    <li class="last"><a href="#">Delete</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end products table -->
 
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/02/01</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/02/01</td>
-                                <td class="center">Admin</td>
-                                <td class="center">
-                                    <span class="label">Inactive</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/02/01</td>
-                                <td class="center">Admin</td>
-                                <td class="center">
-                                    <span class="label">Inactive</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/21</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/01/21</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-success">Active</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/08/23</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/08/23</td>
-                                <td class="center">Staff</td>
-                                <td class="center">
-                                    <span class="label label-important">Banned</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/06/01</td>
-                                <td class="center">Admin</td>
-                                <td class="center">
-                                    <span class="label">Inactive</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dennis Ji</td>
-                                <td class="center">2012/03/01</td>
-                                <td class="center">Member</td>
-                                <td class="center">
-                                    <span class="label label-warning">Pending</span>
-                                </td>
-                                <td class="center">
-                                    <a class="btn btn-success" href="#">
-                                        <i class="halflings-icon white zoom-in"></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="halflings-icon white edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="halflings-icon white trash"></i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <!-- orders table -->
+            <div class="table-wrapper orders-table section">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>Orders</h4>
                     </div>
-                </div><!--/span-->
+                </div>
 
-            </div><!--/row-->
+                <div class="row-fluid filter-block">
+                    <div class="pull-right">
+                        <div class="btn-group pull-right">
+                            <button class="glow left large">All</button>
+                            <button class="glow middle large">Pending</button>
+                            <button class="glow right large">Completed</button>
+                        </div>
+                        <input type="text" class="search order-search" placeholder="Search for an order.." />
+                    </div>
+                </div>
 
-        </div><!--/.fluid-container-->
+                <div class="row-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="span2">
+                                Order ID
+                            </th>
+                            <th class="span3">
+                                Date
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>
+                                Name
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>
+                                Status
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>
+                                Items
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>
+                                Total amount
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row -->
+                        <tr class="first">
+                            <td>
+                                <a href="#">#459</a>
+                            </td>
+                            <td>
+                                Jan 03, 2014
+                            </td>
+                            <td>
+                                <a href="#">John Smith</a>
+                            </td>
+                            <td>
+                                <span class="label label-success">Completed</span>
+                            </td>
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                $ 3,500.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">#510</a>
+                            </td>
+                            <td>
+                                Feb 22, 2014
+                            </td>
+                            <td>
+                                <a href="#">Anna Richards</a>
+                            </td>
+                            <td>
+                                <span class="label label-info">Pending</span>
+                            </td>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                $ 800.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">#590</a>
+                            </td>
+                            <td>
+                                Mar 03, 2014
+                            </td>
+                            <td>
+                                <a href="#">Steven McFly</a>
+                            </td>
+                            <td>
+                                <span class="label label-success">Completed</span>
+                            </td>
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                $ 1,350.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">#618</a>
+                            </td>
+                            <td>
+                                Jan 03, 2014
+                            </td>
+                            <td>
+                                <a href="#">George Williams</a>
+                            </td>
+                            <td>
+                                <span class="label">Canceled</span>
+                            </td>
+                            <td>
+                                8
+                            </td>
+                            <td>
+                                $ 3,499.99
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end orders table -->
 
-        <!-- end: Content -->
-    </div><!--/#content.span10-->
-</div><!--/fluid-row-->
+            <!-- users table -->
+            <div class="table-wrapper users-table section">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>Users</h4>
+                    </div>
+                </div>
 
-<div class="modal hide fade" id="myModal">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Settings</h3>
-    </div>
-    <div class="modal-body">
-        <p>Here settings can be configured...</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <a href="#" class="btn btn-primary">Save changes</a>
+                <div class="row-fluid filter-block">
+                    <div class="pull-right">
+                        <a class="btn-flat pull-right success new-product add-user">+ Add user</a>
+                        <input type="text" class="search user-search" placeholder="Search for users.." />
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="span4">
+                                Name
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>Signed up
+                            </th>
+                            <th class="span2">
+                                <span class="line"></span>Total spent
+                            </th>
+                            <th class="span3 align-right">
+                                <span class="line"></span>Email
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row -->
+                        <tr class="first">
+                            <td>
+                                <img src="img/contact-img.png" class="img-circle avatar hidden-phone" />
+                                <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
+                                <span class="subtext">Graphic Design</span>
+                            </td>
+                            <td>
+                                Jan 11, 2012
+                            </td>
+                            <td>
+                                $ 500.00
+                            </td>
+                            <td class="align-right">
+                                <a href="#">alejandra@gmail.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/contact-img2.png" class="img-circle avatar hidden-phone" />
+                                <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
+                                <span class="subtext">Graphic Design</span>
+                            </td>
+                            <td>
+                                Apr 23, 2012
+                            </td>
+                            <td>
+                                $ 3,210.00
+                            </td>
+                            <td class="align-right">
+                                <a href="#">alejandra@gmail.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/contact-img.png" class="img-circle avatar hidden-phone" />
+                                <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
+                                <span class="subtext">Graphic Design</span>
+                            </td>
+                            <td>
+                                Feb 03, 2014
+                            </td>
+                            <td>
+                                $ 890.00
+                            </td>
+                            <td class="align-right">
+                                <a href="#">alejandra@gmail.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/contact-img2.png" class="img-circle avatar hidden-phone" />
+                                <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
+                                <span class="subtext">Graphic Design</span>
+                            </td>
+                            <td>
+                                Sep 19, 2012
+                            </td>
+                            <td>
+                                $ 899.99
+                            </td>
+                            <td class="align-right">
+                                <a href="#">alejandra@gmail.com</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end users table -->
+        </div>
     </div>
 </div>
-<div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-        <ul class="list-inline item-details">
-            <li><a href="#">Admin templates</a></li>
-            <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-        </ul>
-    </div>
-</div>
-<div class="clearfix"></div>
+<!-- end main container -->
 
-@include('public.footer')
-
-<!-- start: JavaScript-->
-
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jquery-migrate-1.0.0.min.js"></script>
-
-<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
-
-<script src="js/jquery.ui.touch-punch.js"></script>
-
-<script src="js/modernizr.js"></script>
-
+<!-- scripts -->
+<script src="js/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
-<script src="js/jquery.cookie.js"></script>
-
-<script src='js/fullcalendar.min.js'></script>
-
-<script src='js/jquery.dataTables.min.js'></script>
-
-<script src="js/excanvas.js"></script>
-<script src="js/jquery.flot.js"></script>
-<script src="js/jquery.flot.pie.js"></script>
-<script src="js/jquery.flot.stack.js"></script>
-<script src="js/jquery.flot.resize.min.js"></script>
-
-<script src="js/jquery.chosen.min.js"></script>
-
-<script src="js/jquery.uniform.min.js"></script>
-
-<script src="js/jquery.cleditor.min.js"></script>
-
-<script src="js/jquery.noty.js"></script>
-
-<script src="js/jquery.elfinder.min.js"></script>
-
-<script src="js/jquery.raty.min.js"></script>
-
-<script src="js/jquery.iphone.toggle.js"></script>
-
-<script src="js/jquery.uploadify-3.1.min.js"></script>
-
-<script src="js/jquery.gritter.min.js"></script>
-
-<script src="js/jquery.imagesloaded.js"></script>
-
-<script src="js/jquery.masonry.min.js"></script>
-
-<script src="js/jquery.knob.modified.js"></script>
-
-<script src="js/jquery.sparkline.min.js"></script>
-
-<script src="js/counter.js"></script>
-
-<script src="js/retina.js"></script>
-
-<script src="js/custom.js?v=20170804"></script>
-<!-- end: JavaScript-->
+<script src="js/theme.js"></script>
 
 </body>
 </html>

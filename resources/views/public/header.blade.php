@@ -1,282 +1,125 @@
-<div class="navbar">
+<div class="navbar navbar-inverse">
     <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="{{ url('/home') }}"><span>JUKAI</span></a>
+        <button type="button" class="btn btn-navbar visible-phone" id="menu-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
 
-            <!-- start: Header Menu -->
-            <div class="nav-no-collapse header-nav">
-                <ul class="nav pull-right">
-                    <li class="dropdown hidden-phone">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-bell"></i>
-                            <span class="badge red">
-								7 </span>
-                        </a>
-                        <ul class="dropdown-menu notifications">
-                            <li class="dropdown-menu-title">
-                                <span>You have 11 notifications</span>
-                                <a href="#refresh"><i class="icon-repeat"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon blue"><i class="icon-user"></i></span>
-                                    <span class="message">New user registration</span>
-                                    <span class="time">1 min</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon green"><i class="icon-comment-alt"></i></span>
-                                    <span class="message">New comment</span>
-                                    <span class="time">7 min</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon green"><i class="icon-comment-alt"></i></span>
-                                    <span class="message">New comment</span>
-                                    <span class="time">8 min</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon green"><i class="icon-comment-alt"></i></span>
-                                    <span class="message">New comment</span>
-                                    <span class="time">16 min</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon blue"><i class="icon-user"></i></span>
-                                    <span class="message">New user registration</span>
-                                    <span class="time">36 min</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon yellow"><i class="icon-shopping-cart"></i></span>
-                                    <span class="message">2 items sold</span>
-                                    <span class="time">1 hour</span>
-                                </a>
-                            </li>
-                            <li class="warning">
-                                <a href="#">
-                                    <span class="icon red"><i class="icon-user"></i></span>
-                                    <span class="message">User deleted account</span>
-                                    <span class="time">2 hour</span>
-                                </a>
-                            </li>
-                            <li class="warning">
-                                <a href="#">
-                                    <span class="icon red"><i class="icon-shopping-cart"></i></span>
-                                    <span class="message">New comment</span>
-                                    <span class="time">6 hour</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon green"><i class="icon-comment-alt"></i></span>
-                                    <span class="message">New comment</span>
-                                    <span class="time">yesterday</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon blue"><i class="icon-user"></i></span>
-                                    <span class="message">New user registration</span>
-                                    <span class="time">yesterday</span>
-                                </a>
-                            </li>
-                            <li class="dropdown-menu-sub-footer">
-                                <a>View all notifications</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- start: Notifications Dropdown -->
-                    <li class="dropdown hidden-phone">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-calendar"></i>
-                            <span class="badge red">
-								5 </span>
-                        </a>
-                        <ul class="dropdown-menu tasks">
-                            <li class="dropdown-menu-title">
-                                <span>You have 17 tasks in progress</span>
-                                <a href="#refresh"><i class="icon-repeat"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">
-										<span class="header">
-											<span class="title">iOS Development</span>
-											<span class="percent"></span>
-										</span>
-                                    <div class="taskProgress progressSlim red">80</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-										<span class="header">
-											<span class="title">Android Development</span>
-											<span class="percent"></span>
-										</span>
-                                    <div class="taskProgress progressSlim green">47</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-										<span class="header">
-											<span class="title">ARM Development</span>
-											<span class="percent"></span>
-										</span>
-                                    <div class="taskProgress progressSlim yellow">32</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-										<span class="header">
-											<span class="title">ARM Development</span>
-											<span class="percent"></span>
-										</span>
-                                    <div class="taskProgress progressSlim greenLight">63</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-										<span class="header">
-											<span class="title">ARM Development</span>
-											<span class="percent"></span>
-										</span>
-                                    <div class="taskProgress progressSlim orange">80</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-menu-sub-footer">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- end: Notifications Dropdown -->
-                    <!-- start: Message Dropdown -->
-                    <li class="dropdown hidden-phone">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-envelope"></i>
-                            <span class="badge red">
-								4 </span>
-                        </a>
-                        <ul class="dropdown-menu messages">
-                            <li class="dropdown-menu-title">
-                                <span>You have 9 messages</span>
-                                <a href="#refresh"><i class="icon-repeat"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
-                                    <span class="header">
-											<span class="from">
-										    	Dennis Ji
-										     </span>
-											<span class="time">
-										    	6 min
-										    </span>
-										</span>
-                                    <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
-                                    <span class="header">
-											<span class="from">
-										    	Dennis Ji
-										     </span>
-											<span class="time">
-										    	56 min
-										    </span>
-										</span>
-                                    <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
-                                    <span class="header">
-											<span class="from">
-										    	Dennis Ji
-										     </span>
-											<span class="time">
-										    	3 hours
-										    </span>
-										</span>
-                                    <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
-                                    <span class="header">
-											<span class="from">
-										    	Dennis Ji
-										     </span>
-											<span class="time">
-										    	yesterday
-										    </span>
-										</span>
-                                    <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
-                                    <span class="header">
-											<span class="from">
-										    	Dennis Ji
-										     </span>
-											<span class="time">
-										    	Jul 25, 2012
-										    </span>
-										</span>
-                                    <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-menu-sub-footer">View all messages</a>
-                            </li>
-                        </ul>
-                    </li>
+        <a class="brand" href="{{ url('/home') }}"><img src="img/logo.png" /></a>
 
-                    <!-- start: User Dropdown -->
-                    <li class="dropdown">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="halflings-icon white user"></i> Dennis Ji
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-menu-title">
-                                <span>Account Settings</span>
-                            </li>
-                            <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-                            <li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
-                        </ul>
-                    </li>
-                    <!-- end: User Dropdown -->
+        <ul class="nav pull-right">
+            <li class="hidden-phone">
+                <input class="search" type="text" />
+            </li>
+            <li class="notification-dropdown hidden-phone">
+                <a href="#" class="trigger">
+                    <i class="icon-warning-sign"></i>
+                    <span class="count">8</span>
+                </a>
+                <div class="pop-dialog">
+                    <div class="pointer right">
+                        <div class="arrow"></div>
+                        <div class="arrow_border"></div>
+                    </div>
+                    <div class="body">
+                        <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
+                        <div class="notifications">
+                            <h3>You have 6 new notifications</h3>
+                            <a href="#" class="item">
+                                <i class="icon-signin"></i> New user registration
+                                <span class="time"><i class="icon-time"></i> 13 min.</span>
+                            </a>
+                            <a href="#" class="item">
+                                <i class="icon-signin"></i> New user registration
+                                <span class="time"><i class="icon-time"></i> 18 min.</span>
+                            </a>
+                            <a href="#" class="item">
+                                <i class="icon-envelope-alt"></i> New message from Alejandra
+                                <span class="time"><i class="icon-time"></i> 28 min.</span>
+                            </a>
+                            <a href="#" class="item">
+                                <i class="icon-signin"></i> New user registration
+                                <span class="time"><i class="icon-time"></i> 49 min.</span>
+                            </a>
+                            <a href="#" class="item">
+                                <i class="icon-download-alt"></i> New order placed
+                                <span class="time"><i class="icon-time"></i> 1 day.</span>
+                            </a>
+                            <div class="footer">
+                                <a href="#" class="logout">View all notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+            <li class="notification-dropdown hidden-phone">
+                <a href="#" class="trigger">
+                    <i class="icon-envelope-alt"></i>
+                </a>
+                <div class="pop-dialog">
+                    <div class="pointer right">
+                        <div class="arrow"></div>
+                        <div class="arrow_border"></div>
+                    </div>
+                    <div class="body">
+                        <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
+                        <div class="messages">
+                            <a href="#" class="item">
+                                <img src="img/contact-img.png" class="display" />
+                                <div class="name">Alejandra Galván</div>
+                                <div class="msg">
+                                    There are many variations of available, but the majority have suffered alterations.
+                                </div>
+                                <span class="time"><i class="icon-time"></i> 13 min.</span>
+                            </a>
+                            <a href="#" class="item">
+                                <img src="img/contact-img2.png" class="display" />
+                                <div class="name">Alejandra Galván</div>
+                                <div class="msg">
+                                    There are many variations of available, have suffered alterations.
+                                </div>
+                                <span class="time"><i class="icon-time"></i> 26 min.</span>
+                            </a>
+                            <a href="#" class="item last">
+                                <img src="img/contact-img.png" class="display" />
+                                <div class="name">Alejandra Galván</div>
+                                <div class="msg">
+                                    There are many variations of available, but the majority have suffered alterations.
+                                </div>
+                                <span class="time"><i class="icon-time"></i> 48 min.</span>
+                            </a>
+                            <div class="footer">
+                                <a href="#" class="logout">View all messages</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
+                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="personal-info.html">Personal info</a></li>
+                    <li><a href="#">Account settings</a></li>
+                    <li><a href="#">Billing</a></li>
+                    <li><a href="#">Export your data</a></li>
+                    <li><a href="#">Send feedback</a></li>
                 </ul>
-            </div>
-            <!-- end: Header Menu -->
-
-        </div>
+            </li>
+            <li class="settings hidden-phone">
+                <a href="personal-info.html" role="button">
+                    <i class="icon-cog"></i>
+                </a>
+            </li>
+            <li class="settings hidden-phone">
+                <a href="{{ url('logout') }}" role="button">
+                    <i class="icon-share-alt"></i>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
