@@ -28,3 +28,9 @@ Route::get('/logout', 'LoginController@logout');
 
 Route::get('/server', 'ServiceController@serverList');
 
+Route::get('/addServer', function () {
+    return view('add-server');
+});
+
+Route::post('/updServer', 'ServiceController@updServer');
+

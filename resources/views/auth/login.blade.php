@@ -9,7 +9,7 @@
         <div class="span4 box" id="loginForm">
             <div class="content-wrap">
                 <h6>登录</h6>
-                <input class="span12" type="text" name="name" placeholder="用户名" v-model="name"/>
+                <input class="span12" type="text" name="name" placeholder="用户名" v-model="name" id="name"/>
                 <input class="span12" type="password" name="password" placeholder="密码" v-model="password"/>
                 {{--<a href="#" class="forgot">Forgot password?</a>--}}
                 <div class="remember">

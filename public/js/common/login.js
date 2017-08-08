@@ -8,7 +8,6 @@ new Vue({
     },
     mounted: function () {
         axios.get('/remember').then((response) => {
-            console.log(response);
             let d = response.data;
             if(d.code === 1) {
                 this.name = d.data.name;
