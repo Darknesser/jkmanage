@@ -8,35 +8,55 @@ new Vue({
         provider_account: '',
         provider_pwd: '',
         server_account: '',
-        server_pwd: '',
-        deadline: '08/08/2017'
+        server_pwd: ''
     },
     methods: {
         addServer: function () {
-            console.log(this.deadline);
-            // axios.post('/updServer', {
-            //     owner: this.owner,
-            //     ip: this.ip,
-            //     provider_name: this.provider_name,
-            //     provider_account: this.provider_account,
-            //     provider_pwd: this.provider_pwd,
-            //     server_account: this.server_account,
-            //     server_pwd: this.server_pwd,
-            //     deadline: this.deadline
-            // }).then((response) => {
-            //     let data = response.data;
-            //     if (data.code === 0) {
-            //         layer.msg(data.message);
-            //     }else{
-            //         location.href = '/server';
-            //     }
-            // }).catch((error) => {
-            //     let data = error.response.data;
-            //     for (let i in data) {
-            //         layer.msg(data[i][0]);
-            //         return false;
-            //     }
-            // });
+            axios.post('/updServer', {
+                owner: this.owner,
+                ip: this.ip,
+                provider_name: this.provider_name,
+                provider_account: this.provider_account,
+                provider_pwd: this.provider_pwd,
+                server_account: this.server_account,
+                server_pwd: this.server_pwd,
+                deadline: $('.datepicker').val()
+            }).then((response) => {
+                let data = response.data;
+                if (data.code === 0) {
+                    layer.msg(data.message);
+                }else{
+                    location.href = '/server';
+                }
+            }).catch((error) => {
+                let data = error.response.data;
+                for (let i in data) {
+                    layer.msg(data[i][0]);
+                    return false;
+                }
+            });
         }
     }
+});
+
+//服务器列表
+new Vue({
+    el: '#serverTable',
+    data: {
+        items: ''
+    },
+    mounted: function () {
+        axios.post('/serverList').then((response) => {
+            console.log(response.data.data);
+            this.items = response.data.data.data;
+            // let d = response.data;
+            // if(d.code === 1) {
+            //     this.name = d.data.name;
+            //     this.password = d.data.pwd;
+            //     this.remember = 1;
+            // }else {
+            //     this.$message.error(d.message);
+            // }
+        });
+    },
 });

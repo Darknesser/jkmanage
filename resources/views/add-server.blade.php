@@ -82,12 +82,10 @@
                     </div>
                     <div class="field-box">
                         <label>到期时间:</label>
-                        <input type="text" value="08/08/2017" class="input-large datepicker" v-model="deadline"/>
+                        <input type="text" value="2017-08-08" class="input-large datepicker"/>
                     </div>
                     <div class="span6 field-box actions">
                         <input type="button" class="btn-glow primary" value="保存" v-on:click="addServer"/>
-                        <span>OR</span>
-                        <input type="reset" value="取消" class="reset" />
                     </div>
                     </form>
                 </div>
@@ -124,7 +122,7 @@
         });
 
         // datepicker plugin
-        $('.datepicker').datepicker().on('changeDate', function (ev) {
+        $('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', function (ev) {
             $(this).datepicker('hide');
         });
 

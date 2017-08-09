@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="row-fluid">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="serverTable">
                         <thead>
                         <tr>
                             <th class="span3">
@@ -83,10 +83,13 @@
                                 <span class="line"></span>IP
                             </th>
                             <th class="span3">
-                                <span class="line"></span>阿里云账号
+                                <span class="line"></span>服务器商
                             </th>
                             <th class="span3">
-                                <span class="line"></span>阿里云密码
+                                <span class="line"></span>服务器平台账号
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>服务器平台密码
                             </th>
                             <th class="span3">
                                 <span class="line"></span>服务器账号
@@ -97,108 +100,65 @@
                             <th class="span3">
                                 <span class="line"></span>到期时间
                             </th>
+                            <th class="span3">
+                                <span class="line"></span>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- row -->
-                        <tr class="first">
+                        <tr class="first" v-for="item in items">
                             <td>
                                 <input type="checkbox" />
-                                <div class="img">
-                                    <img src="img/table-img.png" />
-                                </div>
-                                <a href="#" class="name">Generate Lorem </a>
+                                {{--<div class="img">--}}
+                                    {{--<img src="img/table-img.png" />--}}
+                                {{--</div>--}}
+                                <a href="#" class="name">@{{ item.id }} </a>
                             </td>
                             <td class="description">
-                                if you are going to use a passage of Lorem Ipsum.
-                            </td>
-                            <td>
-                                <span class="label label-success">Active</span>
-                                <ul class="actions">
-                                    <li><a href="#">Edit</a></li>
-                                    <li class="last"><a href="#">Delete</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                                <div class="img">
-                                    <img src="img/table-img.png" />
-                                </div>
-                                <a href="#" class="name">Internet tend</a>
+                                @{{ item.owner }}
                             </td>
                             <td class="description">
-                                There are many variations of passages.
-                            </td>
-                            <td>
-                                <ul class="actions">
-                                    <li><a href="#">Edit</a></li>
-                                    <li class="last"><a href="#">Delete</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                                <div class="img">
-                                    <img src="img/table-img.png" />
-                                </div>
-                                <a href="#" class="name">Generate Lorem </a>
+                                @{{ item.ip }}
                             </td>
                             <td class="description">
-                                if you are going to use a passage of Lorem Ipsum.
-                            </td>
-                            <td>
-                                <ul class="actions">
-                                    <li><a href="#">Edit</a></li>
-                                    <li class="last"><a href="#">Delete</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                                <div class="img">
-                                    <img src="img/table-img.png" />
-                                </div>
-                                <a href="#" class="name">Internet tend</a>
+                                @{{ item.provider_name }}
                             </td>
                             <td class="description">
-                                There are many variations of passages.
-                            </td>
-                            <td>
-                                <span class="label label-info">Standby</span>
-                                <ul class="actions">
-                                    <li><a href="#">Edit</a></li>
-                                    <li class="last"><a href="#">Delete</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                                <div class="img">
-                                    <img src="img/table-img.png" />
-                                </div>
-                                <a href="#" class="name">Generate Lorem </a>
+                                @{{ item.provider_account }}
                             </td>
                             <td class="description">
-                                if you are going to use a passage of Lorem Ipsum.
+                                @{{ item.provider_pwd }}
+                            </td>
+                            <td class="description">
+                                @{{ item.server_account }}
+                            </td>
+                            <td class="description">
+                                @{{ item.server_pwd }}
+                            </td>
+                            <td class="description">
+                                @{{ item.deadline }}
                             </td>
                             <td>
-                                <span class="label label-success">Active</span>
+                                {{--<span class="label label-success">Active</span>--}}
                                 <ul class="actions">
-                                    <li><a href="#">Edit</a></li>
-                                    <li class="last"><a href="#">Delete</a></li>
+                                    <li><a href="#">编辑</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
                                 </ul>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div class="pagination pull-right">
+                        <ul>
+                            <li><a href="#">&#8249;</a></li>
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">&#8250;</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- end products table -->
@@ -212,6 +172,10 @@
 <script src="js/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/common/service.js"></script>
 
 </body>
 </html>

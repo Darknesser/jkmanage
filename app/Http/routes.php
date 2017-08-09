@@ -26,7 +26,11 @@ Route::get('/remember', 'LoginController@remember');
 
 Route::get('/logout', 'LoginController@logout');
 
-Route::get('/server', 'ServiceController@serverList');
+Route::post('/serverList', 'ServiceController@serverList');
+
+Route::get('/server', function () {
+    return view('server-list');
+});
 
 Route::get('/addServer', function () {
     return view('add-server');
