@@ -32,8 +32,8 @@ Route::get('/server', function () {
     return view('server-list');
 });
 
-Route::get('/addServer', function () {
-    return view('add-server');
+Route::get('/addServer/{id}', function ($id) {
+    return view('add-server')->with(['id' => $id]);
 });
 
 Route::post('/updServer', 'ServiceController@updServer');

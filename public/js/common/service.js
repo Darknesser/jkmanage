@@ -20,20 +20,21 @@ new Vue({
                 provider_pwd: this.provider_pwd,
                 server_account: this.server_account,
                 server_pwd: this.server_pwd,
-                deadline: $('.datepicker').val()
+                deadline: $('.datepicker').val(),
+                id: $('#id').val()
             }).then((response) => {
-                let data = response.data;
-                if (data.code === 0) {
-                    layer.msg(data.message);
-                }else{
-                    location.href = '/server';
-                }
+                // let data = response.data;
+                // if (data.code === 0) {
+                //     layer.msg(data.message);
+                // }else{
+                //     location.href = '/server';
+                // }
             }).catch((error) => {
-                let data = error.response.data;
-                for (let i in data) {
-                    layer.msg(data[i][0]);
-                    return false;
-                }
+                // let data = error.response.data;
+                // for (let i in data) {
+                //     layer.msg(data[i][0]);
+                //     return false;
+                // }
             });
         }
     }
@@ -43,12 +44,15 @@ new Vue({
 new Vue({
     el: '#serverTable',
     data: {
-        items: ''
+        items: '',
+        pageHtml: ''
     },
     mounted: function () {
         axios.post('/serverList').then((response) => {
-            console.log(response.data.data);
-            this.items = response.data.data.data;
+            // console.log(response.data.data);
+            let d = response.data.data;
+            this.items = d.data;
+            this.pageHtml = d.pageHtml;
             // let d = response.data;
             // if(d.code === 1) {
             //     this.name = d.data.name;
@@ -59,4 +63,12 @@ new Vue({
             // }
         });
     },
+    methods: {
+        anotherPage: function () {
+            alert(1111);
+            axios.post('/serverList').then((response) => {
+                console.log(response);
+            })
+        }
+    }
 });

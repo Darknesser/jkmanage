@@ -68,8 +68,8 @@
                     </div>
                 </div>
 
-                <div class="row-fluid">
-                    <table class="table table-hover" id="serverTable">
+                <div class="row-fluid" id="serverTable">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th class="span3">
@@ -142,23 +142,22 @@
                             <td>
                                 {{--<span class="label label-success">Active</span>--}}
                                 <ul class="actions">
-                                    <li><a href="#">编辑</a></li>
+                                    <li><a :href="'{{ url('/addServer') }}/'+item.id">编辑</a></li>
                                     <li class="last"><a href="#">删除</a></li>
                                 </ul>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <div class="pagination pull-right">
-                        <ul>
-                            <li><a href="#">&#8249;</a></li>
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">&#8250;</a></li>
-                        </ul>
-                    </div>
+                    <div class="pagination pull-right" v-html="pageHtml"></div>
+                    {{--<ul>--}}
+                    {{--<li><a href="#">&#8249;</a></li>--}}
+                    {{--<li><a class="active" href="#">1</a></li>--}}
+                    {{--<li><a href="#">2</a></li>--}}
+                    {{--<li><a href="#">3</a></li>--}}
+                    {{--<li><a href="#">4</a></li>--}}
+                    {{--<li><a href="#">&#8250;</a></li>--}}
+                    {{--</ul>--}}
                 </div>
             </div>
             <!-- end products table -->

@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- bootstrap -->
-    <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap/bootstrap-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap/bootstrap-overrides.css') }}" type="text/css" rel="stylesheet" />
 
     <!-- libraries -->
-    <link href="css/lib/bootstrap-wysihtml5.css" type="text/css" rel="stylesheet" />
-    <link href="css/lib/uniform.default.css" type="text/css" rel="stylesheet" />
-    <link href="css/lib/select2.css" type="text/css" rel="stylesheet" />
-    <link href="css/lib/bootstrap.datepicker.css" type="text/css" rel="stylesheet" />
-    <link href="css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/lib/bootstrap-wysihtml5.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/lib/uniform.default.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/lib/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/lib/bootstrap.datepicker.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/lib/font-awesome.css') }}" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/elements.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/icons.css') }}" />
 
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="css/compiled/form-showcase.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/compiled/form-showcase.css') }}" type="text/css" media="screen" />
 
     <!-- open sans font -->
     {{--<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />--}}
@@ -84,6 +84,7 @@
                         <label>到期时间:</label>
                         <input type="text" value="2017-08-08" class="input-large datepicker"/>
                     </div>
+                    <input type="hidden" id="id" value="{{ $id }}"/>
                     <div class="span6 field-box actions">
                         <input type="button" class="btn-glow primary" value="保存" v-on:click="addServer"/>
                     </div>
@@ -96,18 +97,18 @@
 <!-- end main container -->
 
 <!-- scripts for this page -->
-<script src="js/wysihtml5-0.3.0.js"></script>
-<script src="js/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-wysihtml5-0.0.2.js"></script>
-<script src="js/bootstrap.datepicker.js"></script>
-<script src="js/jquery.uniform.min.js"></script>
-<script src="js/select2.min.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/vue.min.js"></script>
+<script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
+<script src="{{ asset('js/jquery-latest.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-wysihtml5-0.0.2.js') }}"></script>
+<script src="{{ asset('js/bootstrap.datepicker.js') }}"></script>
+<script src="{{ asset('js/jquery.uniform.min.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/theme.js') }}"></script>
+<script src="{{ asset('js/vue.min.js') }}"></script>
 <script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="js/common/service.js"></script>
+<script src="{{ asset('js/common/service.js') }}"></script>
 
 <!-- call this page plugins -->
 <script type="text/javascript">
