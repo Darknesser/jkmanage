@@ -10,7 +10,7 @@
             <div class="content-wrap">
                 <h6>登录</h6>
                 <input class="span12" type="text" name="name" placeholder="用户名" v-model="name" id="name"/>
-                <input class="span12" type="password" name="password" placeholder="密码" v-model="password"/>
+                <input class="span12" type="password" name="password" placeholder="密码" v-model="password" v-on:keyup.13="login"/>
                 {{--<a href="#" class="forgot">Forgot password?</a>--}}
                 <div class="remember">
                     <input id="remember-me" type="checkbox" v-model="remember" name="remember"/>

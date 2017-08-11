@@ -47,7 +47,7 @@
 
             <!-- products table-->
             <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
-            <div class="table-wrapper products-table section">
+            <div class="table-wrapper products-table section" id="serverTable">
                 <div class="row-fluid head">
                     <div class="span12">
                         <h4>服务器</h4>
@@ -57,18 +57,18 @@
                 <div class="row-fluid filter-block">
                     <div class="pull-right">
                         <div class="ui-select">
-                            <select>
-                                <option />Filter users
-                                <option />Signed last 30 days
-                                <option />Active users
+                            <select v-model="selected">
+                                <option v-for="option in options" v-bind:value="option.value">
+                                    @{{ option.text }}
+                                </option>
                             </select>
                         </div>
-                        <input type="text" class="search" />
+                        <input type="text" class="search" v-on:keyup.13="show" v-model="condition"/>
                         <a class="btn-flat new-product" href="{{ url('/addServer') }}">+ 添加</a>
                     </div>
                 </div>
 
-                <div class="row-fluid" id="serverTable">
+                <div class="row-fluid">
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -107,7 +107,7 @@
                         </thead>
                         <tbody>
                         <!-- row -->
-                        <tr class="first" v-for="item in items">
+                        <tr class="first" v-for="(item, index) in items">
                             <td>
                                 <input type="checkbox" />
                                 {{--<div class="img">--}}
@@ -143,7 +143,7 @@
                                 {{--<span class="label label-success">Active</span>--}}
                                 <ul class="actions">
                                     <li><a :href="'{{ url('/addServer') }}/'+item.id">编辑</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
+                                    <li class="last"><a href="javascript:void(0)" v-on:click="delServer(item.id, index)">删除</a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -174,7 +174,72 @@
 <script src="js/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="js/common/service.js"></script>
 
 </body>
 </html>
+
+<script>
+    new Vue({
+        el: '#serverTable',
+        data: {
+            items: '',
+            pageHtml: '',
+            selected: 'id',
+            options: [
+                {text: 'ID',value: 'id'},
+                {text: '持有者',value: 'owner'}
+            ],
+            condition: ''
+        },
+        mounted: function () {
+            axios.post('/serverList').then((response) => {
+                // console.log(response.data.data);
+                let d = response.data.data;
+                this.items = d.data;
+                this.pageHtml = d.pageHtml;
+                // let d = response.data;
+                // if(d.code === 1) {
+                //     this.name = d.data.name;
+                //     this.password = d.data.pwd;
+                //     this.remember = 1;
+                // }else {
+                //     this.$message.error(d.message);
+                // }
+            });
+        },
+        methods: {
+            anotherPage: function () {
+                alert(1111);
+                axios.post('/serverList').then((response) => {
+                    console.log(response);
+                })
+            },
+            delServer: function (id, index) {
+                let it = this.items;
+                layer.confirm('确认删除吗？', {
+                    btn: ['确认', '取消']
+                }, function () {
+                    axios.get('/delServer', {
+                        params: {
+                            id: id
+                        }
+                    }).then((response) => {
+                        let d = response.data;
+                        if(d.code === 1) {
+                            layer.msg(d.message, {icon: 1, time: 1000}, function () {
+                                it.splice(index, 1);
+//                                location.reload();
+                            });
+                        }else {
+                            layer.msg(d.message, {icon: 2,time: 1000});
+                        }
+                    });
+
+                })
+            },
+            show: function () {
+                alert(this.selected);
+            }
+        }
+    });
+</script>

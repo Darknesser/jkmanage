@@ -11,30 +11,30 @@
 |
 */
 
+//登录
 Route::get('/', function () {
-//    dd(\Illuminate\Support\Facades\Auth::user());
     return view('auth.login');
 });
-
 Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
 Route::post('/login', 'LoginController@login');
-
 Route::get('/remember', 'LoginController@remember');
-
 Route::get('/logout', 'LoginController@logout');
 
-Route::post('/serverList', 'ServiceController@serverList');
+Route::group(['middleware' => 'guest'], function () {
+    //首页
+    Route::get('/home', 'HomeController@index');
 
-Route::get('/server', function () {
-    return view('server-list');
+    //服务器
+    Route::post('/serverList', 'ServiceController@serverList');
+    Route::get('/server', function () {
+        return view('server-list');
+    });
+    Route::get('/addServer/{id?}', function ($id = null) {
+        return view('add-server')->with(['id' => $id]);
+    });
+    Route::post('/updServer', 'ServiceController@updServer');
+    Route::get('/oneServer', 'ServiceController@oneServer');
+    Route::get('/delServer', 'ServiceController@delServer');
 });
 
-Route::get('/addServer/{id}', function ($id) {
-    return view('add-server')->with(['id' => $id]);
-});
-
-Route::post('/updServer', 'ServiceController@updServer');
 

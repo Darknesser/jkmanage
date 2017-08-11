@@ -23,9 +23,12 @@ class Server extends Model
         return $server->id ? true : false;
     }
 
+    /**
+     * @return mixed
+     */
     public function selServer() {
-        $servers = $this->paginate(2);
-        $pageHtml = $servers->links()->toHtml();
+        $servers = $this->where('is_del',1)->paginate(2);
+        $pageHtml = $servers->links() ? $servers->links()->toHtml() : '';
         $servers = $servers->toArray();
         $servers['pageHtml'] = $pageHtml;
         return $servers;

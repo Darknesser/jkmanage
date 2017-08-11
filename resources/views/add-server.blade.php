@@ -108,7 +108,7 @@
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="{{ asset('js/common/service.js') }}"></script>
+<script src="{{ asset('js/common/service.js?v=20170811') }}"></script>
 
 <!-- call this page plugins -->
 <script type="text/javascript">
