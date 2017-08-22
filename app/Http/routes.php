@@ -38,8 +38,8 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/getOwnerList', 'ServiceController@getOwnerList');
 
     //客户
-    Route::get('/customer', function () {
-        return view('customer-list');
+    Route::get('/customer/{id?}', function ($id = null) {
+        return view('customer-list')->with(['id' => $id]);
     });
     Route::post('/customerList', 'CustomerController@customerList');
     Route::get('/addCustomer/{id?}', function ($id = null) {

@@ -119,7 +119,7 @@
                                 @{{ item.id }}
                             </td>
                             <td class="description">
-                                @{{ item.owner }}
+                                <a href="{{ url('/customer/1') }}">@{{ item.owner }}</a>
                             </td>
                             <td class="description">
                                 @{{ item.ip }}
@@ -142,8 +142,8 @@
                             <td class="description">
                                 @{{ item.deadline }}
                             </td>
-                            <td class="description">
-                                @{{ item.remark }}
+                            <td class="description" v-bind:id="'remark-'+index" v-on:mouseover="showDetail(index)">
+                                @{{ item.remark | replace }}
                             </td>
                             <td>
                                 {{--<span class="label label-success">Active</span>--}}
@@ -240,6 +240,32 @@
                     this.items = d.data;
                     this.pageHtml = d.pageHtml;
                 });
+            },
+            showDetail: function (index) {
+                let data = this.items[index].remark;
+                data = !data ? '暂无备注' : data;
+                layer.tips(data, '#remark-'+index, {tips: 4});
+            }
+        },
+        filters: {
+            replace: function (value) {
+                let strlen = 0;
+                let s = '';
+                if(!value) {
+                    return "";
+                }
+                for(let i = 0; i < value.length; i++) {
+                    if(value.charCodeAt(i) > 128) {
+                        strlen += 2;
+                    } else {
+                        strlen ++;
+                    }
+                    s += value.charAt(i);
+                    if(strlen >= 10) {
+                        return s + '...';
+                    }
+                }
+                return s;
             }
         }
     });

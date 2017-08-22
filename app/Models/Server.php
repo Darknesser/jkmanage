@@ -43,9 +43,9 @@ class Server extends Model
         $pageHtml = $servers->links() ? $servers->links()->toHtml() : '';
         $servers = $servers->toArray();
         $servers['pageHtml'] = $pageHtml;
-        foreach ($servers['data'] as $k => $server) {
-            $servers['data'][$k]['remark'] = str_limit($server['remark'], 6, '...');
-        }
+//        foreach ($servers['data'] as $k => $server) {
+//            $servers['data'][$k]['remark'] = str_limit($server['remark'], 6, '...');
+//        }
         return $servers;
     }
 }
