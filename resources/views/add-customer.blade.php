@@ -51,56 +51,28 @@
             <div class="row-fluid form-wrapper">
                 <!-- left column -->
                 <div class="span8 column">
-                    <form id="addServer">
+                    <form id="addCustomer">
                         <div class="field-box">
-                            <label>持有者:</label>
-                            <input class="span8 inline-input" placeholder="请输入持有者名称" type="text" v-model="owner"/>
-                        </div>
-                        {{--<div class="field-box">--}}
-                            {{--<label>来源:</label>--}}
-                            {{--<div class="ui-select">--}}
-                                {{--<owner-list></owner-list>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        <div class="field-box">
-                            <label>IP:</label>
-                            <input class="span8 inline-input" placeholder="请输入服务器外网IP" type="text" v-model="ip"/>
+                            <label>名称:</label>
+                            <input class="span8 inline-input" placeholder="请输入客户名称" type="text" v-model="name"/>
                         </div>
                         <div class="field-box">
-                            <label>服务器商:</label>
-                            <input class="span8 inline-input" placeholder="请输入服务器商名称" type="text"
-                                   v-model="provider_name"/>
+                            <label>来源:</label>
+                            <div class="ui-select">
+                                <select v-model="selected">
+                                    <option v-for="option in options" v-bind:value="option.value">
+                                        @{{ option.text }}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                         <div class="field-box">
-                            <label>服务器平台账号:</label>
-                            <input class="span8 inline-input" placeholder="请输入服务器平台账号" type="text"
-                                   v-model="provider_account"/>
-                        </div>
-                        <div class="field-box">
-                            <label>服务器平台密码:</label>
-                            <input class="span8 inline-input" placeholder="请输入服务器平台密码" type="text"
-                                   v-model="provider_pwd"/>
-                        </div>
-                        <div class="field-box">
-                            <label>服务器账号:</label>
-                            <input class="span8 inline-input" placeholder="请输入服务器账号" type="text"
-                                   v-model="server_account"/>
-                        </div>
-                        <div class="field-box">
-                            <label>服务器密码:</label>
-                            <input class="span8 inline-input" placeholder="请输入服务器密码" type="text" v-model="server_pwd"/>
-                        </div>
-                        <div class="field-box">
-                            <label>到期时间:</label>
-                            <input type="text" value="2017-08-08" class="input-large datepicker"/>
-                        </div>
-                        <div class="field-box">
-                            <label>备注:</label>
-                            <textarea class="span8" rows="4" v-model="remark"></textarea>
+                            <label>负责人:</label>
+                            <input class="span8 inline-input" placeholder="请输入客户负责人" type="text" v-model="principal"/>
                         </div>
                         <input type="hidden" id="id" value="{{ $id }}"/>
                         <div class="span6 field-box actions">
-                            <input type="button" class="btn-glow primary" value="保存" v-on:click="addServer"/>
+                            <input type="button" class="btn-glow primary" value="保存" v-on:click="addCustomer"/>
                         </div>
                     </form>
                 </div>
@@ -150,3 +122,62 @@
 
 </body>
 </html>
+
+<script>
+    //添加服务器
+    new Vue({
+        el: '#addCustomer',
+        data: {
+            name: '',
+            source: '',
+            principal: '',
+            selected: '代理商',
+            options: [
+                {text: '代理商', value: '代理商'},
+                {text: '资管系统', value: '资管系统'}
+            ]
+        },
+        mounted: function () {
+            let id = $('#id').val();
+            if(id) {
+                axios.get('/oneCustomer', {
+                    params: {
+                        id: id
+                    }
+                }).then((response) => {
+                     console.log(response.data.data);
+                    let data = response.data.data;
+                    this.name = data.name;
+                    this.selected = data.source;
+                    this.principal = data.principal;
+                })
+            }
+        },
+        methods: {
+            addCustomer: function () {
+                axios.post('/updCustomer', {
+                    name: this.name,
+                    source: this.selected,
+                    principal: this.principal,
+                    id: $('#id').val()
+                }).then((response) => {
+                    let data = response.data;
+                    if (data.code === 0) {
+                        layer.msg(data.message);
+                    }else{
+                        location.href = '/customer';
+                    }
+                }).catch((error) => {
+                    let data = error.response.data;
+                    for (let i in data) {
+                        layer.msg(data[i][0]);
+                        return false;
+                    }
+                });
+            }
+        }
+    });
+
+
+
+</script>

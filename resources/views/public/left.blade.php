@@ -1,6 +1,6 @@
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li class="{{ \Illuminate\Support\Facades\Request::path() == 'home' ? 'active' : ''}}">
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
@@ -10,29 +10,29 @@
                 <span>首页</span>
             </a>
         </li>
-        <li>
+        <li class="{{ \Illuminate\Support\Facades\Request::path() == 'server' ? 'active' : ''}}">
             <a href="{{ url('/server') }}">
                 <i class="icon-signal"></i>
                 <span>服务器</span>
             </a>
         </li>
-        <li>
+        <li class="{{ \Illuminate\Support\Facades\Request::path() == 'domain' ? 'active' : ''}}">
             <a href="{{ url('/domain') }}">
                 <i class="icon-th-large"></i>
                 <span>域名</span>
             </a>
         </li>
-        <li>
-            <a class="dropdown-toggle" href="#">
+        <li class="{{ \Illuminate\Support\Facades\Request::path() == 'customer' ? 'active' : ''}}">
+            <a href="{{ url('/customer') }}">
                 <i class="icon-group"></i>
-                <span>Users</span>
-                <i class="icon-chevron-down"></i>
+                <span>客户</span>
+                {{--<i class="icon-chevron-down"></i>--}}
             </a>
-            <ul class="submenu">
-                <li><a href="user-list.html">User list</a></li>
-                <li><a href="new-user.html">New user form</a></li>
-                <li><a href="user-profile.html">User profile</a></li>
-            </ul>
+            {{--<ul class="submenu">--}}
+                {{--<li><a href="user-list.html">User list</a></li>--}}
+                {{--<li><a href="new-user.html">New user form</a></li>--}}
+                {{--<li><a href="user-profile.html">User profile</a></li>--}}
+            {{--</ul>--}}
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
