@@ -40,7 +40,7 @@
 <script src="js/theme.js"></script>
 <script src="js/vue.min.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
 <script src="js/common/login.js"></script>
 
 </body>

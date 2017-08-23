@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Detail Admin - Form Showcase</title>
+    <title>巨开管理后台</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -93,7 +93,7 @@
 <script src="{{ asset('js/theme.js') }}"></script>
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
 <script src="{{ asset('js/common/service.js?v=20170811') }}"></script>
 
 <!-- call this page plugins -->

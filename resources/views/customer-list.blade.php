@@ -108,6 +108,14 @@
                                 <ul class="actions">
                                     <li><a :href="'{{ url('/addCustomer') }}/'+item.id">编辑</a></li>
                                     <li class="last"><a href="javascript:void(0)" v-on:click="delCustomer(item.id, index)">删除</a></li>
+                                    {{--<li><a href="javascript:void(0)" v-on:click="more">更多</a></li>--}}
+                                    <div class="ui-select span8">
+                                        <select v-model="more_selected" v-on:change="more(item.id)">
+                                            <option v-for="m in more_options" v-bind:value="m.value">
+                                                @{{ m.text }}
+                                            </option>
+                                        </select>
+                                    </div>
                                 </ul>
                             </td>
                         </tr>
@@ -130,7 +138,7 @@
 <script src="{{ asset('js/theme.js') }}"></script>
 <script src="{{ asset('js/vue.min.js') }}"></script>
 <script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
 
 </body>
 </html>
@@ -148,7 +156,13 @@
                 {text: '来源', value: 'source'},
                 {text: '负责人', value: 'principal'}
             ],
-            condition: ''
+            condition: '',
+            more_selected: 'action',
+            more_options: [
+                {text: '更多操作', value: 'action'},
+                {text: '添加服务器', value: 'add_server'},
+                {text: '添加域名', value: 'add_domain'}
+            ]
         },
         mounted: function () {
             this.condition = $('#id').val();
@@ -195,6 +209,16 @@
                     this.items = d.data;
                     this.pageHtml = d.pageHtml;
                 });
+            },
+            more: function (id) {
+                switch (this.more_selected) {
+                    case 'add_server':
+                        location.href = '{{ url('/addServer') }}/' + id;
+                        break;
+                    case 'add_domain':
+                        location.href = '{{ url('/addDomain') }}';
+                        break;
+                }
             }
         }
     });

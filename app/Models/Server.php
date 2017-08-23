@@ -33,19 +33,18 @@ class Server extends Model
      * @return mixed
      */
     public function selServer(array $data) {
-        $servers = self::where('is_del', 1)
+        $servers = self::select('servers.*', 'c.id as c_id', 'c.name')
+            ->where('servers.is_del', 1)
             ->where(function ($query) use ($data) {
-                !empty($data['id']) && $query->where('id', $data['id']);
-                isset($data['owner']) && $query->where('owner', 'like', '%'.$data['owner'].'%');
+                !empty($data['id']) && $query->where('servers.id', $data['id']);
+                isset($data['owner']) && $query->where('c.name', 'like', '%'.$data['owner'].'%');
             })
-            ->orderBy('id', 'desc')
+            ->leftJoin('customers as c', 'servers.customer_id', '=', 'c.id')
+            ->orderBy('servers.id', 'desc')
             ->paginate(10);
         $pageHtml = $servers->links() ? $servers->links()->toHtml() : '';
         $servers = $servers->toArray();
         $servers['pageHtml'] = $pageHtml;
-//        foreach ($servers['data'] as $k => $server) {
-//            $servers['data'][$k]['remark'] = str_limit($server['remark'], 6, '...');
-//        }
         return $servers;
     }
 }

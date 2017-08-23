@@ -23,11 +23,10 @@
 //     }
 // });
 
-//添加服务器
 new Vue({
     el: '#addServer',
     data: {
-        owner: '',
+        // owner: '',
         ip: '',
         provider_name: '',
         provider_account: '',
@@ -43,7 +42,7 @@ new Vue({
     methods: {
         addServer: function () {
             axios.post('/updServer', {
-                owner: this.owner,
+                customer_id: $('#cid').val(),
                 ip: this.ip,
                 provider_name: this.provider_name,
                 provider_account: this.provider_account,
@@ -77,7 +76,7 @@ new Vue({
                 }).then((response) => {
                     // console.log(response.data.data);
                     let data = response.data.data;
-                    this.owner = data.owner;
+                    // this.owner = data.owner;
                     this.ip = data.ip;
                     this.provider_name = data.provider_name;
                     this.provider_account = data.provider_account;

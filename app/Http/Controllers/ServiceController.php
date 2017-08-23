@@ -19,12 +19,12 @@ class ServiceController extends Controller
     //添加或编辑服务器
     public function updServer(Request $request) {
         $this->validate($request, [
-            'owner' => 'required',
+//            'owner' => 'required',
             'ip' => 'required',
             'server_account' => 'required',
             'server_pwd' => 'required',
         ], [
-            'owner.required' => '持有者不为空',
+//            'owner.required' => '持有者不为空',
             'ip.required' => 'IP不为空',
 //            'ip.ip' => 'IP地址格式错误',
             'server_account.required' => '服务器账号不为空',

@@ -29,9 +29,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/server', function () {
         return view('server-list');
     });
-    Route::get('/addServer/{id?}', function ($id = null) {
-        return view('add-server')->with(['id' => $id]);
-    });
+    Route::get('/addServer/{cid}/{id?}', function ($cid, $id = null) {
+        return view('add-server')->with(['cid' => $cid, 'id' => $id]);
+    })->where(['cid' => '[0-9]+', 'id' => '[0-9]+']);
     Route::post('/updServer', 'ServiceController@updServer');
     Route::get('/oneServer', 'ServiceController@oneServer');
     Route::get('/delServer', 'ServiceController@delServer');
@@ -40,14 +40,20 @@ Route::group(['middleware' => 'guest'], function () {
     //客户
     Route::get('/customer/{id?}', function ($id = null) {
         return view('customer-list')->with(['id' => $id]);
-    });
+    })->where('id', '[0-9]+');
     Route::post('/customerList', 'CustomerController@customerList');
     Route::get('/addCustomer/{id?}', function ($id = null) {
         return view('add-customer')->with(['id' => $id]);
-    });
+    })->where('id', '[0-9]+');
     Route::get('/oneCustomer', 'CustomerController@oneCustomer');
     Route::post('/updCustomer', 'CustomerController@updCustomer');
     Route::get('/delCustomer', 'CustomerController@delCustomer');
+
+    //域名
+    Route::get('/domain', function () {
+        return view('domain-list');
+    });
+    Route::get('/addDomain', 'DomainController@index');
 });
 
 
