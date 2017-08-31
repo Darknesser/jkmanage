@@ -101,10 +101,11 @@
                             <label>备注:</label>
                             <textarea class="span8" rows="4" v-model="remark"></textarea>
                         </div>
-                        {{--<input type="hidden" id="id" value="{{ $id }}"/>--}}
-                        {{--<input type="hidden" id="cid" value="{{ $cid }}"/>--}}
+                        <input type="hidden" id="id" value="{{ $id }}"/>
+                        <input type="hidden" id="cid" value="{{ $cid }}"/>
+                        <input type="hidden" id="pid" value="{{ $pid }}"/>
                         <div class="span6 field-box actions">
-                            <input type="button" class="btn-glow primary" value="保存" v-on:click="addServer"/>
+                            <input type="button" class="btn-glow primary" value="保存" v-on:click="addDomain"/>
                         </div>
                     </form>
                 </div>
@@ -168,14 +169,17 @@
         },
         mounted: function () {
             let id = $('#id').val();
-            this.oneServer(id);
+            let pid = $('#pid').val();
+            this.oneServer(id, pid);
         },
         methods: {
-            addServer: function () {
+            addDomain: function () {
+                let pid = $('#pid').val();
+                pid = !pid ? 0 : pid;
                 axios.post('/updDomain', {
                     name: this.name,
                     customer_id: $('#cid').val(),
-                    pid: '',
+                    pid: pid,
                     provider_name: this.provider_name,
                     provider_account: this.provider_account,
                     provider_pwd: this.provider_pwd,
@@ -183,14 +187,14 @@
                     user: this.user,
                     remark: this.remark,
                     resolution_at: $('#datepicker2').val(),
-                    
-                    id: $('#id').val()
+                    live_at: $('#datepicker3').val(),
+                    id: $('#id').val(),
                 }).then((response) => {
                     let data = response.data;
                     if (data.code === 0) {
                         layer.msg(data.message);
                     }else{
-                        location.href = '/server';
+                        location.href = '/domain';
                     }
                 }).catch((error) => {
                     let data = error.response.data;
@@ -200,9 +204,9 @@
                     }
                 });
             },
-            oneServer: function (id) {
-                if(id) {
-                    axios.get('/oneServer', {
+            oneServer: function (id, pid) {
+                if(id && !pid) {
+                    axios.get('/oneDomain', {
                         params: {
                             id: id
                         }
@@ -210,14 +214,34 @@
                         // console.log(response.data.data);
                         let data = response.data.data;
                         // this.owner = data.owner;
-                        this.ip = data.ip;
+                        this.name = data.name;
                         this.provider_name = data.provider_name;
                         this.provider_account = data.provider_account;
                         this.provider_pwd = data.provider_pwd;
-                        this.server_account = data.server_account;
-                        this.server_pwd = data.server_pwd;
-                        $('.datepicker').val(data.deadline);
-                        this.remark = data.remark
+                        $('#datepicker1').val(data.deadline === '0000-00-00' ? '' : data.deadline);
+                        this.user = data.user;
+                        $('#datepicker2').val(data.resolution_at === '0000-00-00' ? '' : data.resolution_at);
+                        $('#datepicker3').val(data.live_at === '0000-00-00' ? '' : data.live_at);
+                        this.remark = data.remark;
+                    })
+                } else if(pid) {
+                    axios.get('/oneDomain', {
+                        params: {
+                            id: pid
+                        }
+                    }).then((response) => {
+                        console.log(response.data.data);
+                        let data = response.data.data;
+                        // this.owner = data.owner;
+//                        this.name = data.name;
+                        this.provider_name = data.provider_name;
+                        this.provider_account = data.provider_account;
+                        this.provider_pwd = data.provider_pwd;
+                        $('#datepicker1').val(data.deadline === '0000-00-00' ? '' : data.deadline);
+//                        this.user = data.user;
+                        $('#datepicker2').val('');
+//                        $('#datepicker3').val(data.live_at === '0000-00-00' ? '' : data.live_at);
+//                        this.remark = data.remark;
                     })
                 }
             }

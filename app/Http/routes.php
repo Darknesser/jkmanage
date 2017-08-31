@@ -53,7 +53,12 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/domain', function () {
         return view('domain-list');
     });
-    Route::get('/addDomain', 'DomainController@index');
+    Route::get('/addDomain/{cid}/{id?}/{pid?}', 'DomainController@addDomain')
+        ->where(['cid' => '[0-9]+', 'id' => '[0-9]+', 'pid' => '[0-9]+']);
+    Route::post('/updDomain', 'DomainController@updDomain');
+    Route::post('/domainList', 'DomainController@domainList');
+    Route::get('/oneDomain', 'DomainController@oneDomain');
+    Route::get('/delDomain', 'DomainController@delDomain');
 });
 
 

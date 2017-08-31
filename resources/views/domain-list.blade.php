@@ -50,7 +50,7 @@
             <div class="table-wrapper products-table section" id="serverTable">
                 <div class="row-fluid head">
                     <div class="span12">
-                        <h4>客户</h4>
+                        <h4>域名</h4>
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
                             </select>
                         </div>
                         <input type="text" class="search" v-on:keyup.13="showData" v-model="condition"/>
-                        <a class="btn-flat new-product" href="{{ url('/addCustomer') }}">+ 添加</a>
+                        {{--<a class="btn-flat new-product" href="{{ url('/addCustomer') }}">+ 添加</a>--}}
                     </div>
                 </div>
 
@@ -120,7 +120,7 @@
                                 @{{ item.name }}
                             </td>
                             <td class="description">
-                                @{{ item.customer_name }}
+                                <a :href="'{{ url('/customer') }}/'+item.c_id">@{{ item.c_name }}</a>
                             </td>
                             <td class="description">
                                 @{{ item.pid }}
@@ -140,19 +140,25 @@
                             <td class="description">
                                 @{{ item.user }}
                             </td>
-                            <td class="description">
-                                @{{ item.resolution_at }}——@{{ item.live_at }}
+                            <td class="description" v-if="item.live_at === '0000-00-00' && item.resolution_at !== '0000-00-00'">
+                                @{{ item.resolution_at }}<br>无限期
                             </td>
-                            <td class="description">
-                                @{{ item.remark }}
+                            <td class="description" v-else-if="item.resolution_at === '0000-00-00' || item.live_at === '0000-00-00'">
+                                未解析
+                            </td>
+                            <td class="description" v-else>
+                                @{{ item.resolution_at }}<br>@{{ item.live_at }}
+                            </td>
+                            <td class="description" v-bind:id="'remark-'+index" v-on:mouseover="showDetail(index)">
+                                @{{ item.remark | replace }}
                             </td>
                             <td>
                                 <ul class="actions">
-                                    <li><a :href="'{{ url('/addCustomer') }}/'+item.id">编辑</a></li>
-                                    <li class="last"><a href="javascript:void(0)" v-on:click="delCustomer(item.id, index)">删除</a></li>
+                                    <li><a :href="'{{ url('/addDomain') }}/'+item.c_id+'/'+item.id">编辑</a></li>
+                                    <li class="last"><a href="javascript:void(0)" v-on:click="delDomain(item.id, index)">删除</a></li>
                                     {{--<li><a href="javascript:void(0)" v-on:click="more">更多</a></li>--}}
                                     <div class="ui-select span8">
-                                        <select v-model="more_selected" v-on:change="more(item.id)">
+                                        <select v-model="more_selected" v-on:change="more(item.c_id, item.id, item.id)">
                                             <option v-for="m in more_options" v-bind:value="m.value">
                                                 @{{ m.text }}
                                             </option>
@@ -193,17 +199,17 @@
             pageHtml: '',
             selected: 'id',
             options: [
-                {text: 'ID',value: 'id'},
-                {text: '名称',value: 'name'},
-                {text: '来源', value: 'source'},
-                {text: '负责人', value: 'principal'}
+                {text: 'ID', value: 'id'},
+                {text: '名称', value: 'name'},
+                {text: '持有者', value: 'owner'},
+                {text: '上级ID', value: 'pid'},
+                {text: '使用者', value: 'user'}
             ],
             condition: '',
             more_selected: 'action',
             more_options: [
                 {text: '更多操作', value: 'action'},
-                {text: '添加服务器', value: 'add_server'},
-                {text: '添加域名', value: 'add_domain'}
+                {text: '添加子域名', value: 'add_domain'}
             ]
         },
         mounted: function () {
@@ -219,12 +225,12 @@
                     this.showData(page);
                 }
             },
-            delCustomer: function (id, index) {
+            delDomain: function (id, index) {
                 let it = this.items;
                 layer.confirm('确认删除吗？', {
                     btn: ['确认', '取消']
                 }, function () {
-                    axios.get('/delCustomer', {
+                    axios.get('/delDomain', {
                         params: {
                             id: id
                         }
@@ -242,7 +248,7 @@
                 })
             },
             showData: function (p) {
-                axios.post('/customerList', {
+                axios.post('/domainList', {
                     [this.selected]: this.condition,
                     page: p
                 }).then((response) => {
@@ -252,15 +258,38 @@
                     this.pageHtml = d.pageHtml;
                 });
             },
-            more: function (id) {
+            more: function (c_id, id, pid) {
                 switch (this.more_selected) {
-                    case 'add_server':
-                        location.href = '{{ url('/addServer') }}/' + id;
-                        break;
                     case 'add_domain':
-                        location.href = '{{ url('/addDomain') }}';
+                        location.href = '{{ url('/addDomain') }}/'+ c_id + '/' + id + '/' + pid;
                         break;
                 }
+            },
+            showDetail: function (index) {
+                let data = this.items[index].remark;
+                data = !data ? '暂无备注' : data;
+                layer.tips(data, '#remark-'+index, {tips: 4});
+            }
+        },
+        filters: {
+            replace: function (value) {
+                let strlen = 0;
+                let s = '';
+                if(!value) {
+                    return "";
+                }
+                for(let i = 0; i < value.length; i++) {
+                    if(value.charCodeAt(i) > 128) {
+                        strlen += 2;
+                    } else {
+                        strlen ++;
+                    }
+                    s += value.charAt(i);
+                    if(strlen >= 10) {
+                        return s + '...';
+                    }
+                }
+                return s;
             }
         }
     });

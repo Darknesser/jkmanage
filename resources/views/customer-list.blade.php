@@ -216,7 +216,7 @@
                         location.href = '{{ url('/addServer') }}/' + id;
                         break;
                     case 'add_domain':
-                        location.href = '{{ url('/addDomain') }}';
+                        location.href = '{{ url('/addDomain') }}/' + id;
                         break;
                 }
             }

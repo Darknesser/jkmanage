@@ -54,30 +54,30 @@
                 <div class="span3 stat">
                     <div class="data">
                         <span class="number">2457</span>
-                        visits
+                        服务器
                     </div>
-                    <span class="date">Today</span>
+                    {{--<span class="date">Today</span>--}}
                 </div>
                 <div class="span3 stat">
                     <div class="data">
                         <span class="number">3240</span>
-                        users
+                        顶级域名
                     </div>
-                    <span class="date">February 2014</span>
+                    {{--<span class="date">February 2014</span>--}}
                 </div>
                 <div class="span3 stat">
                     <div class="data">
                         <span class="number">322</span>
-                        orders
+                        资管客户
                     </div>
-                    <span class="date">This week</span>
+                    {{--<span class="date">This week</span>--}}
                 </div>
                 <div class="span3 stat last">
                     <div class="data">
                         <span class="number">$2,340</span>
-                        sales
+                        代理商
                     </div>
-                    <span class="date">last 30 days</span>
+                    {{--<span class="date">last 30 days</span>--}}
                 </div>
             </div>
         </div>
